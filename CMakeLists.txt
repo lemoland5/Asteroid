@@ -5,13 +5,12 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Asteroid main.cpp
         Game.cpp
-        Game.h
         Vector.cpp
-        Vector.h
-        GameObject.cpp
-        GameObject.h
         TextureManager.cpp
-        TextureManager.h
+        SDLGameObject.cpp
+        Player.cpp
+        EventHandler.cpp
+        EventHandler.h
 )
 
 find_package(SDL2_image CONFIG REQUIRED)

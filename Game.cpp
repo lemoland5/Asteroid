@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "TextureManager.h"
+#include "Vector.h"
 #include <iostream>
 #include <SDL.h>
 
@@ -33,11 +34,11 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 
 
 
+//                float degrees = 0.0f;
+//                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
 
-
-
-
+                m_pPlayer = new Player(new LoaderParams({100,100},20,20,70.0f,"rocket"));
 
 
 
@@ -55,7 +56,7 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 void Game::render() {
     SDL_RenderClear(m_pRenderer);
 
-    TextureManager::getInstance()->draw("rocket",0,0, 100, 100);
+    m_pPlayer->draw();
 
     SDL_RenderPresent(m_pRenderer);
 }
@@ -72,7 +73,8 @@ void Game::handleEvents() {
 }
 
 void Game::update() {
-    std::cout<<SDL_GetTicks64()<<"\n";
+//    std::cout<<SDL_GetTicks64()<<"\n";
+    m_pPlayer->update();
 }
 
 void Game::clean(){

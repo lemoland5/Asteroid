@@ -1,12 +1,14 @@
 #pragma once
 
+#define M_PI 3.1415
+
 class Vector2 {
 public:
-    int x;
-    int y;
+    float x;
+    float y;
 
     Vector2();
-    Vector2(int x, int y);
+    Vector2(float x, float y);
 
     float length() const;
     void normalise();
@@ -17,7 +19,14 @@ public:
     Vector2 operator*(float scalar) const;
     void operator*=(float scalar);
 
+    void operator=(int value);
+
+    friend float degToRadian(float deg);
+    friend Vector2 degToVector(float deg);
 
 };
+
+Vector2 degToVector(float deg);
+
 
 typedef Vector2 Vector2D;

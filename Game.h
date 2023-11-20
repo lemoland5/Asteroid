@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Player.h"
 #include <SDL.h>
 
 class Game {
@@ -25,6 +26,9 @@ private:
 
     SDL_Window* m_pWindow;      // mpw
     SDL_Renderer* m_pRenderer;  // mpr
+
+    GameObject* m_pPlayer;
+
 
     bool m_Running;
 

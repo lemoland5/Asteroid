@@ -22,7 +22,8 @@ void TextureManager::draw(std::string id, int x, int y, int w, int h){
     srcRect.x = srcRect.y = 0;
     SDL_QueryTexture(m_TextureMap[id],NULL, NULL, &srcRect.w, &srcRect.h);
 
-    destRect.x = destRect.y = 0;
+    destRect.x = x;
+    destRect.y = y;
     if(w) destRect.w = w;
     else destRect.w = srcRect.w;
 

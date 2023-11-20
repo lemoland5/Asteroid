@@ -6,7 +6,7 @@ Vector2::Vector2(){
     y = 0;
 }
 
-Vector2::Vector2(int x, int y){
+Vector2::Vector2(float x, float y){
     this->x = x;
     this->y = y;
 }
@@ -36,4 +36,18 @@ void Vector2::operator+=(Vector2 &v2) {
 
 Vector2 Vector2::operator*(float scalar) const {
     return Vector2(x*scalar, y*scalar);
+}
+
+void Vector2::operator=(int value) {
+    x = y = value;
+}
+
+float degToRadian(float deg) {
+    return deg * M_PI / 180;
+}
+
+Vector2 degToVector(float deg) {
+    Vector2 vec(1, tan(degToRadian(deg)));
+    vec.normalise();
+    return vec;
 }
