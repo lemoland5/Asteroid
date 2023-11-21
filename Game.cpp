@@ -33,13 +33,14 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 
                 TextureManager::getInstance()->load("../assets/rocketship1.png", "rocket");
 //                SDL_SetTextureAlphaMod(TextureManager::getInstance()->getTexture("rocket"),50);
-                TextureManager::getInstance()->load("../assets/particle.jpg", "particle");
+                TextureManager::getInstance()->load("../assets/star.png", "particle");
 
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
 
                 addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket")) ;
+                addGameObject<Particle>(new LoaderParams({300,300},120,120,80.0f,"particle")) ;
 
 
 
@@ -69,10 +70,15 @@ void Game::handleEvents() {
     if(EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_ESCAPE)) m_Running = false;
 }
 void Game::update() {
-//    std::cout<<SDL_GetTicks64()<<"\n";
 
-    for(auto & m_GameObject : m_GameObjects){
-        m_GameObject->update();
+    for(int i = 0; i < m_GameObjects.size(); i++){
+
+        m_GameObjects[i]->update();
+
+        if(m_GameObjects[i]->isMarkedForDeletion()){
+            delete m_GameObjects[i];
+            m_GameObjects.erase(m_GameObjects.begin() + i);
+        }
     }
 
     std::cout<<m_GameObjects.size()<<"\n";

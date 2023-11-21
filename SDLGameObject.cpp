@@ -15,6 +15,8 @@ SDLGameObject::SDLGameObject(const LoaderParams* params): GameObject(){
 
     m_Velocity = {1,1};
     m_Acceleration = 0;
+
+    m_MarkedForDeletion = false;
 }
 
 void SDLGameObject::draw() {

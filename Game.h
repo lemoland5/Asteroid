@@ -38,7 +38,7 @@ private:
     SDL_Window* m_pWindow;      // mpw
     SDL_Renderer* m_pRenderer;  // mpr
 
-    std::vector<GameObject*> m_GameObjects;
+    std::vector<SDLGameObject*> m_GameObjects;
 //    GameObject* m_pPlayer;
 
 

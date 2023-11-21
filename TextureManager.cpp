@@ -53,3 +53,20 @@ TextureManager::drawFrameEx(std::string id, int row, int column, int frameW, int
 //    SDL_RenderCopy(Game::getInstance()->getRenderer(), m_TextureMap[id], &srcRect, &destRect);
     SDL_RenderCopyEx(Game::getInstance()->getRenderer(), m_TextureMap[id], &srcRect, &destRect, angle, 0, SDL_FLIP_NONE);
 }
+
+void TextureManager::draw(SDL_Texture *texture, int x, int y, int w, int h) {
+    SDL_Rect srcRect, destRect;
+
+    srcRect.x = srcRect.y = 0;
+    SDL_QueryTexture(texture,NULL, NULL, &srcRect.w, &srcRect.h);
+
+    destRect.x = x;
+    destRect.y = y;
+    if(w) destRect.w = w;
+    else destRect.w = srcRect.w;
+
+    if(h) destRect.h = h;
+    else destRect.h = srcRect.h;
+
+    SDL_RenderCopy(Game::getInstance()->getRenderer(), texture, &srcRect, &destRect);
+}

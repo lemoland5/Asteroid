@@ -2,22 +2,26 @@
 #include "TextureManager.h"
 
 void Particle::clean() {
-    SDL_DestroyTexture(m_pTextureBuffer);
-    delete this;
+//    SDL_DestroyTexture(m_pTextureBuffer);
+    m_MarkedForDeletion = true;
 }
 
 void Particle::update() {
+//    SDL_SetTextureAlphaMod(m_pTextureBuffer, m_Alpha);
 
-        m_Alpha--;
-        SDL_SetTextureAlphaMod(m_pTextureBuffer, m_Alpha);
+    --m_Width;
+    --m_Height;
 
+    m_Angle += 0.5f * spin;
 
+    if(m_Width <= 0 || m_Height <= 0) clean();
+//    SDLGameObject::update();
 }
 
 Particle::Particle(const LoaderParams* params): SDLGameObject(params){
-    m_Alpha = 255;
-    m_pTextureBuffer = TextureManager::getInstance()->getTexture(m_TextureId);
+    spin = rand() % 5 - 2;
 }
+
 
 void Particle::draw() {
     SDLGameObject::draw();

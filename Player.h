@@ -10,7 +10,11 @@ public:
     void handleEvents();
 
 
-    Player(const LoaderParams* params): SDLGameObject(params) {};
+    Player(const LoaderParams* params);
+
+private:
+    int m_ParticleDelay;
+    int m_UpdateCounter;
 };
 
 

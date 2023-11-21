@@ -9,8 +9,9 @@ public:
     void update();
     void draw();
     void clean();
+
+
 private:
-    SDL_Texture* m_pTextureBuffer;
-    Uint8 m_Alpha;
+    int spin;
 
 };

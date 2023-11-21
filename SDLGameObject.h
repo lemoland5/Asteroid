@@ -10,9 +10,14 @@ public:
     virtual void draw();
     virtual void update();
 
+    [[nodiscard]] bool isMarkedForDeletion() {return m_MarkedForDeletion; };
+
     SDLGameObject(const LoaderParams* params);
+    virtual ~SDLGameObject(){};
 
 protected:
+    bool m_MarkedForDeletion;
+
     Vector2 m_Position;
     int m_Width;
     int m_Height;

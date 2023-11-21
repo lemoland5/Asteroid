@@ -10,14 +10,16 @@ void Player::draw(){
 }
 
 void Player::update() {
+
+    m_UpdateCounter++;
 //    std::cout<<"Update player \n";
     handleEvents();
     SDLGameObject::update();
 
-    if(SDL_GetTicks64()%100 == 0) {
-
-        Game::getInstance()->addGameObject<Particle>(new LoaderParams({300, 200}, 80, 80, 80.0f, "particle"));
+    if(m_UpdateCounter%m_ParticleDelay == 0){
+        Game::getInstance()->addGameObject<Particle>(new LoaderParams(m_Position, 20, 20, 0, "particle"));
     }
+
 }
 
 void Player::handleEvents() {
@@ -26,4 +28,10 @@ void Player::handleEvents() {
     if(EventHandler::getInstance()->isMouseButtonDown(RIGHT) || EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_RIGHT)) m_Angle += 4.0f;
 
 //    std::cout<<EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_W)<<"\n";
+}
+
+Player::Player(const LoaderParams *params) : SDLGameObject(params) {
+    m_ParticleDelay = 4;
+    m_UpdateCounter = 0;
+    m_Speed = 2.0f;
 }
