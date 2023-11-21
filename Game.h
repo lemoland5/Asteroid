@@ -15,6 +15,9 @@ public:
 
     void clean();           // Cleanup mpr, mpw
 
+    // Setters
+    void setRunning(bool r) {m_Running = r; };
+
     // Getters
     [[nodiscard]] bool isRunning() const {return m_Running; };
     [[nodiscard]] SDL_Renderer* getRenderer() const {return m_pRenderer; };

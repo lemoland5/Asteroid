@@ -47,7 +47,8 @@ float degToRadian(float deg) {
 }
 
 Vector2 degToVector(float deg) {
-    Vector2 vec(1, tan(degToRadian(deg)));
+
+    Vector2 vec(cos(degToRadian(deg)), sin(degToRadian(deg)));
     vec.normalise();
     return vec;
 }

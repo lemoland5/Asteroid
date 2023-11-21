@@ -1,3 +1,4 @@
+#include "EventHandler.h"
 #include "Game.h"
 #include "TextureManager.h"
 #include "Vector.h"
@@ -28,17 +29,15 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
             if(m_pRenderer){
-                SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+                SDL_SetRenderDrawColor(m_pRenderer, 60, 0, 150, 255);
 
                 TextureManager::getInstance()->load("../assets/rocketship.png", "rocket");
-
-
 
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
 
-                m_pPlayer = new Player(new LoaderParams({100,100},20,20,70.0f,"rocket"));
+                m_pPlayer = new Player(new LoaderParams({300,200},60,60,80.0f,"rocket"));
 
 
 
@@ -62,16 +61,8 @@ void Game::render() {
 }
 
 void Game::handleEvents() {
-    SDL_Event event;
-    SDL_PollEvent(&event);
-
-    switch (event.type) {
-        case SDL_QUIT:
-            m_Running = false;
-            break;
-    }
+    EventHandler::getInstance()->update();
 }
-
 void Game::update() {
 //    std::cout<<SDL_GetTicks64()<<"\n";
     m_pPlayer->update();

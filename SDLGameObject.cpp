@@ -11,7 +11,7 @@ SDLGameObject::SDLGameObject(const LoaderParams* params): GameObject(){
 
     m_TextureId = params->m_TextureId;
 
-    m_Speed = 2.5f;
+    m_Speed = 3.50f;
 
     m_Velocity = {1,1};
     m_Acceleration = 0;
