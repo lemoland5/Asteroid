@@ -1,16 +1,20 @@
 #pragma once
+#include <SDL.h>
 
 class EventHandler {
 public:
 
     void update();
 
-    bool isMouseButtonDown(int button) {return m_MouseButtonState[button]; };
+    // Getters
+    [[nodiscard]] bool isMouseButtonDown(int button) {return m_MouseButtonState[button]; };
+    [[nodiscard]] bool isKeyboardKeyDown(SDL_Scancode key) {return m_KeyboardState[key]; };
 
     static EventHandler* getInstance();
 
 private:
 
+    const Uint8* m_KeyboardState;
     bool m_MouseButtonState[3];
 
 

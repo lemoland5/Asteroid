@@ -29,15 +29,17 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
             if(m_pRenderer){
-                SDL_SetRenderDrawColor(m_pRenderer, 60, 0, 150, 255);
+                SDL_SetRenderDrawColor(m_pRenderer, 80, 0, 150, 255);
 
-                TextureManager::getInstance()->load("../assets/rocketship.png", "rocket");
+                TextureManager::getInstance()->load("../assets/rocketship1.png", "rocket");
+//                SDL_SetTextureAlphaMod(TextureManager::getInstance()->getTexture("rocket"),50);
+                TextureManager::getInstance()->load("../assets/particle.jpg", "particle");
 
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
 
-                m_pPlayer = new Player(new LoaderParams({300,200},60,60,80.0f,"rocket"));
+                addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket")) ;
 
 
 
@@ -55,20 +57,29 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 void Game::render() {
     SDL_RenderClear(m_pRenderer);
 
-    m_pPlayer->draw();
+    for(auto & m_GameObject : m_GameObjects){
+        m_GameObject->draw();
+    }
 
     SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::handleEvents() {
     EventHandler::getInstance()->update();
+    if(EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_ESCAPE)) m_Running = false;
 }
 void Game::update() {
 //    std::cout<<SDL_GetTicks64()<<"\n";
-    m_pPlayer->update();
+
+    for(auto & m_GameObject : m_GameObjects){
+        m_GameObject->update();
+    }
+
+    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){
     SDL_DestroyRenderer(m_pRenderer);
     SDL_DestroyWindow(m_pWindow);
 }
+

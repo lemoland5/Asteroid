@@ -5,6 +5,7 @@
 class Player: public SDLGameObject{
 public:
     void draw();
+    void drawEx();
     void update();
     void handleEvents();
 
