@@ -24,12 +24,14 @@ Game::Game(){
 bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_WindowFlags flags) {
     if(!SDL_Init(SDL_INIT_EVERYTHING)){
         m_pWindow = SDL_CreateWindow(windowname, x, y, w, h, flags);
+        m_WindowHeight = h;
+        m_WindowWidth = w;
 
         if(m_pWindow){
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
             if(m_pRenderer){
-                SDL_SetRenderDrawColor(m_pRenderer, 80, 0, 150, 255);
+                SDL_SetRenderDrawColor(m_pRenderer, 34, 34, 51, 255);
 
                 TextureManager::getInstance()->load("../assets/rocketship1.png", "rocket");
 //                SDL_SetTextureAlphaMod(TextureManager::getInstance()->getTexture("rocket"),50);
@@ -39,8 +41,7 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
 
-                addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket")) ;
-                addGameObject<Particle>(new LoaderParams({300,300},120,120,80.0f,"particle")) ;
+                addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket",0.0f,0,{},{},{})) ;
 
 
 
@@ -81,7 +82,7 @@ void Game::update() {
         }
     }
 
-    std::cout<<m_GameObjects.size()<<"\n";
+//    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){

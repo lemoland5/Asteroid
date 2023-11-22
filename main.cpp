@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 
     srand(time(nullptr));
 
-    if(Game::getInstance()->init("Asteroid", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,640, 480, SDL_WINDOW_SHOWN)){
+    if(Game::getInstance()->init("Asteroid", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,1200, 800, SDL_WINDOW_SHOWN)){
         while(Game::getInstance()->isRunning()){
             frameStart = SDL_GetTicks64();
             Game::getInstance()->handleEvents();

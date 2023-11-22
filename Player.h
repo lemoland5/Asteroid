@@ -9,6 +9,11 @@ public:
     void update();
     void handleEvents();
 
+    void shoot();
+
+    void updateMovement();
+    void updateAction();
+
 
     Player(const LoaderParams* params);
 

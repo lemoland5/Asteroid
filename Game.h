@@ -29,6 +29,8 @@ public:
     // Getters
     [[nodiscard]] bool isRunning() const {return m_Running; };
     [[nodiscard]] SDL_Renderer* getRenderer() const {return m_pRenderer; };
+    [[nodiscard]] int getWindowWidth() const {return m_WindowWidth; };
+    [[nodiscard]] int getWindowHeight() const {return m_WindowHeight; };
 
     static Game* getInstance(); // Singleton
 
@@ -41,6 +43,8 @@ private:
     std::vector<SDLGameObject*> m_GameObjects;
 //    GameObject* m_pPlayer;
 
+    int m_WindowWidth;
+    int m_WindowHeight;
 
     bool m_Running;
 
