@@ -1,3 +1,4 @@
+#include "Enemy.h"
 #include "EventHandler.h"
 #include "Game.h"
 #include "TextureManager.h"
@@ -34,6 +35,8 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
                 SDL_SetRenderDrawColor(m_pRenderer, 34, 34, 51, 255);
 
                 TextureManager::getInstance()->load("../assets/rocketship1.png", "rocket");
+                TextureManager::getInstance()->load("../assets/rocketship.png", "rocketbad");
+
 //                SDL_SetTextureAlphaMod(TextureManager::getInstance()->getTexture("rocket"),50);
                 TextureManager::getInstance()->load("../assets/star.png", "particle");
 
@@ -42,6 +45,10 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 
 
                 addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket",0.0f,0,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,10},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,200},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,400},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,600},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
 
 
 

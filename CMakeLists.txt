@@ -13,6 +13,8 @@ add_executable(Asteroid main.cpp
         EventHandler.h
         Particle.cpp
         Particle.h
+        Enemy.cpp
+        Enemy.h
 )
 
 find_package(SDL2_image CONFIG REQUIRED)

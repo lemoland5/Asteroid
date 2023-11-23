@@ -1,3 +1,4 @@
+#include "Game.h"
 #include "SDLGameObject.h"
 #include "TextureManager.h"
 #include <iostream>
@@ -23,11 +24,32 @@ void SDLGameObject::draw() {
 }
 
 void SDLGameObject::update() {
+        // Basic position update
     m_Velocity = degToVector(m_Angle) * m_Speed;
     m_Position += m_Velocity;
+
+    for(size_t i = 0; i < Game::getInstance()->getGameObjects().size(); i++){
+        SDL_Rect firstRect, secondRect;
+        firstRect.x = Game::getInstance()->getGameObjects()[i]->m_Position.x;
+        firstRect.y = Game::getInstance()->getGameObjects()[i]->m_Position.y;
+        firstRect.w = Game::getInstance()->getGameObjects()[i]->m_Width;
+        firstRect.h = Game::getInstance()->getGameObjects()[i]->m_Height;
+
+        secondRect.x = m_Position.x;
+        secondRect.y = m_Position.y;
+        secondRect.w = m_Width;
+        secondRect.h = m_Height;
+
+        if(SDL_HasIntersection(&firstRect, &secondRect) == SDL_TRUE) m_CollisionStack.push(Game::getInstance()->getGameObjects()[i]);
+    }
 //    std::cout << m_Position.x<<", "<<m_Position.y<<"\n";
 }
 
 void SDLGameObject::clean() {
+        // Clean collisions
+    while(!m_CollisionStack.empty()){
+        m_CollisionStack.pop();
+    }
+
     m_MarkedForDeletion = true;
 }

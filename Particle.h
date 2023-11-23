@@ -8,9 +8,9 @@ public:
     Particle(const LoaderParams* params);
     void update();
     void draw();
+    void handleCollisions();
     void clean();
 
 
 private:
-
 };

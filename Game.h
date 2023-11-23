@@ -31,6 +31,7 @@ public:
     [[nodiscard]] SDL_Renderer* getRenderer() const {return m_pRenderer; };
     [[nodiscard]] int getWindowWidth() const {return m_WindowWidth; };
     [[nodiscard]] int getWindowHeight() const {return m_WindowHeight; };
+    [[nodiscard]] std::vector<SDLGameObject*> getGameObjects() const {return m_GameObjects; };
 
     static Game* getInstance(); // Singleton
 
