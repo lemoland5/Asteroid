@@ -21,6 +21,7 @@ public:
 
     void operator=(int value);
 
+
     friend float degToRadian(float deg);
     friend Vector2 degToVector(float deg);
 

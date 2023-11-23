@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Player.h"
+#include "Particle.h"
 #include <SDL.h>
+#include <vector>
 
 class Game {
 public:
@@ -15,12 +17,20 @@ public:
 
     void clean();           // Cleanup mpr, mpw
 
+    template<class T>
+    void addGameObject(const LoaderParams *params) {
+        m_GameObjects.push_back(new T(params));
+    }
+
     // Setters
     void setRunning(bool r) {m_Running = r; };
+
 
     // Getters
     [[nodiscard]] bool isRunning() const {return m_Running; };
     [[nodiscard]] SDL_Renderer* getRenderer() const {return m_pRenderer; };
+    [[nodiscard]] int getWindowWidth() const {return m_WindowWidth; };
+    [[nodiscard]] int getWindowHeight() const {return m_WindowHeight; };
 
     static Game* getInstance(); // Singleton
 
@@ -30,8 +40,11 @@ private:
     SDL_Window* m_pWindow;      // mpw
     SDL_Renderer* m_pRenderer;  // mpr
 
-    GameObject* m_pPlayer;
+    std::vector<SDLGameObject*> m_GameObjects;
+//    GameObject* m_pPlayer;
 
+    int m_WindowWidth;
+    int m_WindowHeight;
 
     bool m_Running;
 

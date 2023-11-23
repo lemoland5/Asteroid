@@ -42,6 +42,9 @@ void Vector2::operator=(int value) {
     x = y = value;
 }
 
+
+
+
 float degToRadian(float deg) {
     return deg * M_PI / 180;
 }

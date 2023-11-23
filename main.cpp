@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <cstdlib>
 #include <iostream>
 #include <SDL.h>
 
@@ -7,7 +8,10 @@ const int TARGET_FRAMETIME = 1000/TARGET_FPS;
 int frameStart, frameTime;
 
 int main(int argc, char* argv[]) {
-    if(Game::getInstance()->init("Asteroid", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,640, 480, SDL_WINDOW_SHOWN)){
+
+    srand(time(nullptr));
+
+    if(Game::getInstance()->init("Asteroid", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,1200, 800, SDL_WINDOW_SHOWN)){
         while(Game::getInstance()->isRunning()){
             frameStart = SDL_GetTicks64();
             Game::getInstance()->handleEvents();

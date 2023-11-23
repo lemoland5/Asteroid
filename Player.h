@@ -5,11 +5,21 @@
 class Player: public SDLGameObject{
 public:
     void draw();
+    void drawEx();
     void update();
     void handleEvents();
 
+    void shoot();
 
-    Player(const LoaderParams* params): SDLGameObject(params) {};
+    void updateMovement();
+    void updateAction();
+
+
+    Player(const LoaderParams* params);
+
+private:
+    int m_ParticleDelay;
+    int m_UpdateCounter;
 };
 
 

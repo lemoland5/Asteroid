@@ -17,7 +17,9 @@ void EventHandler::update() {
     SDL_Event event;
     SDL_PollEvent(&event);
 
-    std::cout<<m_MouseButtonState[LEFT]<<", "<<m_MouseButtonState[RIGHT]<<", "<<m_MouseButtonState[MIDDLE]<<"\n";
+    m_KeyboardState = SDL_GetKeyboardState(0);
+
+    //    std::cout<<m_MouseButtonState[LEFT]<<", "<<m_MouseButtonState[RIGHT]<<", "<<m_MouseButtonState[MIDDLE]<<"\n";
 
     switch (event.type) {
         case SDL_MOUSEBUTTONDOWN:
