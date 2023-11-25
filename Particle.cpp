@@ -11,8 +11,8 @@ void Particle::update() {
     SDLGameObject::update();
     handleCollisions();
 
-    m_Width *= 0.95f;
-    m_Height *= 0.95;
+    m_Width -= 1.0f;
+    m_Height -= 0.1f;
     m_Spin += 2.5f;
 
 

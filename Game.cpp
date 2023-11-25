@@ -84,12 +84,13 @@ void Game::update() {
         m_GameObjects[i]->update();
 
         if(m_GameObjects[i]->isMarkedForDeletion()){
+            m_GameObjects[i]->clean();
             delete m_GameObjects[i];
             m_GameObjects.erase(m_GameObjects.begin() + i);
         }
     }
 
-//    std::cout<<m_GameObjects.size()<<"\n";
+    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){
