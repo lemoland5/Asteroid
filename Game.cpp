@@ -43,13 +43,18 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
+                std::cout<<getVectorAngle({-1,-1}, {1,0});
 
+
+                    // DO NOT EDIT PLACEMENT OF THIS LINE
                 addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket",0.0f,0,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,10},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,200},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,400},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,600},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
 
+
+
+                addGameObject<Enemy>(new LoaderParams({600,10},80,80,80.0f,"rocketbad",0.0f,1,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,200},80,80,80.0f,"rocketbad",0.0f,2,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,400},80,80,80.0f,"rocketbad",0.0f,4,{},{},{})) ;
+                addGameObject<Enemy>(new LoaderParams({600,600},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
 
 
 
@@ -90,7 +95,7 @@ void Game::update() {
         }
     }
 
-    std::cout<<m_GameObjects.size()<<"\n";
+//    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){

@@ -24,10 +24,15 @@ public:
 
     friend float degToRadian(float deg);
     friend Vector2 degToVector(float deg);
+    friend float radianToDeg(float rad);
+
+    friend float getVectorAngle(Vector2 vector, Vector2 reference);
+
 
 };
-
-Vector2 degToVector(float deg);
+float degToRadian(float deg);
+float radianToDeg(float rad);
+float getVectorAngle(Vector2 vector, Vector2 reference);
 
 
 typedef Vector2 Vector2D;

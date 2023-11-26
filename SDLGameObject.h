@@ -17,6 +17,8 @@ public:
     [[nodiscard]] bool isPlayerDamage() {return  m_IsPlayerDamage; };
     [[nodiscard]] bool isEnemyDamage() {return  m_IsEnemyDamage; };
 
+    [[nodiscard]] Vector2 getPosition() const {return m_Position; };
+
     SDLGameObject(const LoaderParams* params);
     virtual ~SDLGameObject(){};
 

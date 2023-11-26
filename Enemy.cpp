@@ -26,6 +26,9 @@ void Enemy::update() {
     SDLGameObject::update();
     handleCollisions();
 
+        // -y because of reversed y-axis in sdl
+    m_Angle = getVectorAngle({Game::getInstance()->getPlayer()->getPosition().x - m_Position.x,-Game::getInstance()->getPlayer()->getPosition().y - -m_Position.y}, {1,0}) - 180.0f;
+
 
 //    if(m_UpdateCounter%m_ParticleDelay == 0){
 //        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 50, m_Position.y + m_Width/2 - 50}, 100, 100, m_Angle-180.0f, "particle",m_Spin,m_Speed,{}, {}, {}));

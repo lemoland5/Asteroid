@@ -55,3 +55,20 @@ Vector2 degToVector(float deg) {
     vec.normalise();
     return vec;
 }
+
+float radianToDeg(float rad) {
+    return rad / M_PI * 180;
+}
+
+float getVectorAngle(Vector2 vector, Vector2 reference) {
+    double dot_product = vector.x * reference.x + vector.y * reference.y;
+    double magnitude_v = sqrt(vector.x * vector.x + vector.y * vector.y);
+    double magnitude_u = sqrt(reference.x * reference.x + reference.y * reference.y);
+
+    double cosine_theta = dot_product / (magnitude_v * magnitude_u);
+    double angle_radians = acos(cosine_theta);
+    double angle_degrees = round(angle_radians * 180.0 / M_PI);
+
+    return fmod(360.0f, angle_degrees);
+}
+

@@ -30,8 +30,8 @@ void Player::update() {
 
 void Player::handleEvents() {
 //    std::cout<<m_Angle<<"\n";
-    if(EventHandler::getInstance()->isMouseButtonDown(LEFT) || EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_LEFT)) m_Angle -= 1.5f;
-    if(EventHandler::getInstance()->isMouseButtonDown(RIGHT) || EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_RIGHT)) m_Angle += 1.5f;
+    if(EventHandler::getInstance()->isMouseButtonDown(LEFT) || EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_LEFT)) m_Angle -= 2.5f;
+    if(EventHandler::getInstance()->isMouseButtonDown(RIGHT) || EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_RIGHT)) m_Angle += 2.5f;
     if(EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_SPACE)) shoot();
 
 //    std::cout<<EventHandler::getInstance()->isKeyboardKeyDown(SDL_SCANCODE_W)<<"\n";
@@ -61,13 +61,6 @@ void Player::updateMovement() {
         // Slowdown
     if(m_Velocity.length()>0) m_Speed -= 0.05f;
     if(m_Speed < 0) m_Speed = 0;
-
-        // Portal effect
-    if(m_Position.x > Game::getInstance()->getWindowWidth() + 1) m_Position.x = 1 - m_Width;
-    if(m_Position.x < 1 - m_Width) m_Position.x = Game::getInstance()->getWindowWidth();
-    if(m_Position.y > Game::getInstance()->getWindowHeight() + 1) m_Position.y = 1 - m_Height;
-    if(m_Position.y < 1 - m_Height) m_Position.y = Game::getInstance()->getWindowHeight();
-
 
 
 }

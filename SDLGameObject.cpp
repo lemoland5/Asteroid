@@ -42,6 +42,13 @@ void SDLGameObject::update() {
 
         if(SDL_HasIntersection(&firstRect, &secondRect) == SDL_TRUE) m_CollisionStack.push(Game::getInstance()->getGameObjects()[i]);
     }
+
+    // Portal effect
+    if(m_Position.x > Game::getInstance()->getWindowWidth() + 1) m_Position.x = 1 - m_Width;
+    if(m_Position.x < 1 - m_Width) m_Position.x = Game::getInstance()->getWindowWidth();
+    if(m_Position.y > Game::getInstance()->getWindowHeight() + 1) m_Position.y = 1 - m_Height;
+    if(m_Position.y < 1 - m_Height) m_Position.y = Game::getInstance()->getWindowHeight();
+
 //    std::cout << m_Position.x<<", "<<m_Position.y<<"\n";
 }
 

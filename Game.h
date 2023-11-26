@@ -32,6 +32,7 @@ public:
     [[nodiscard]] int getWindowWidth() const {return m_WindowWidth; };
     [[nodiscard]] int getWindowHeight() const {return m_WindowHeight; };
     [[nodiscard]] std::vector<SDLGameObject*> getGameObjects() const {return m_GameObjects; };
+    [[nodiscard]] SDLGameObject* getPlayer() const {return m_GameObjects[0]; };
 
     static Game* getInstance(); // Singleton
 
