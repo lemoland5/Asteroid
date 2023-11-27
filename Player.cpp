@@ -82,11 +82,11 @@ void Player::shoot() {
         m_Speed = 8.0f;
 
             // Primary
-        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 25, m_Position.y + m_Height/2 - 25}, 50, 40, m_Angle - 180.0f, "particle",m_Spin,m_Speed,{}, {}, {}));
+        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 25, m_Position.y + m_Height/2 - 25}, 40, 40, m_Angle - 180.0f, "particle",m_Spin,m_Speed,{}, {}, {}));
 
             // Secondary
-        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 15, m_Position.y + m_Height/2 - 15}, 30, 20, m_Angle - 175.0f, "particle",m_Spin,m_Speed*0.94f,{}, {}, {}));
-        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 15, m_Position.y + m_Height/2 - 15}, 30, 20, m_Angle - 185.0f, "particle",m_Spin,m_Speed*0.89f,{}, {}, {}));
+        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 15, m_Position.y + m_Height/2 - 15}, 30, 30, m_Angle - 175.0f, "particle",m_Spin,m_Speed*0.94f,{}, {}, {}));
+        Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 15, m_Position.y + m_Height/2 - 15}, 30, 30, m_Angle - 185.0f, "particle",m_Spin,m_Speed*0.89f,{}, {}, {}));
 
             // Tertiary
         Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 10, m_Position.y + m_Height/2 - 10}, 20, 20, m_Angle - 170.0f, "particle",m_Spin,m_Speed*0.8f,{}, {}, {}));
