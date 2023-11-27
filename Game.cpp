@@ -43,22 +43,15 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
 
-                std::cout<<getVectorAngle({-1,-1}, {1,0});
 
 
                     // DO NOT EDIT PLACEMENT OF THIS LINE
-                addGameObject<Player>(new LoaderParams({300,200},80,80,80.0f,"rocket",0.0f,0,{},{},{})) ;
+                addGameObject<Player>(new LoaderParams({300,200},40,40,80.0f,"rocket",0.0f,0,{},{},{})) ;
 
-
-
-                addGameObject<Enemy>(new LoaderParams({600,10},80,80,80.0f,"rocketbad",0.0f,1,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,200},80,80,80.0f,"rocketbad",0.0f,2,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,400},80,80,80.0f,"rocketbad",0.0f,4,{},{},{})) ;
-                addGameObject<Enemy>(new LoaderParams({600,600},80,80,80.0f,"rocketbad",0.0f,0,{},{},{})) ;
-
-
+                addGameObject<Enemy>(new LoaderParams({600,400},40,40,80.0f,"rocketbad",0.0f,0,{},{},{}, {})) ;
 
                 m_Running = true;
+                m_GameTicks = 0;
 
                 return true;
             }
@@ -84,6 +77,15 @@ void Game::handleEvents() {
 }
 void Game::update() {
 
+    ++m_GameTicks;
+//    std::cout<<getVectorAngle({0,1}, {1,0})<<"\n";
+
+    if(m_GameTicks % 180 == 0){
+        addGameObject<Enemy>(new LoaderParams({static_cast<float>(m_WindowWidth * (rand()%100)/100),static_cast<float>(m_WindowHeight * (rand()%40)/100)},40,40,80.0f,"rocketbad",0.0f,1,{},{},{})) ;
+    }
+
+
+
     for(int i = 0; i < m_GameObjects.size(); i++){
 
         m_GameObjects[i]->update();
@@ -95,7 +97,7 @@ void Game::update() {
         }
     }
 
-//    std::cout<<m_GameObjects.size()<<"\n";
+    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){

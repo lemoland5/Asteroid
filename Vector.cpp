@@ -61,14 +61,15 @@ float radianToDeg(float rad) {
 }
 
 float getVectorAngle(Vector2 vector, Vector2 reference) {
-    double dot_product = vector.x * reference.x + vector.y * reference.y;
-    double magnitude_v = sqrt(vector.x * vector.x + vector.y * vector.y);
-    double magnitude_u = sqrt(reference.x * reference.x + reference.y * reference.y);
 
-    double cosine_theta = dot_product / (magnitude_v * magnitude_u);
-    double angle_radians = acos(cosine_theta);
-    double angle_degrees = round(angle_radians * 180.0 / M_PI);
+    float dotProduct = vector.x * reference.x + vector.y * reference.y;
 
-    return fmod(360.0f, angle_degrees);
+    double cosine_theta = dotProduct / (vector.length() * reference.length());
+    double angleRadian = acos(cosine_theta);
+    double angleDegrees = round(angleRadian * 180.0 / M_PI);
+
+    if(vector.y > 0) angleDegrees *= -1;
+
+    return angleDegrees;
 }
 

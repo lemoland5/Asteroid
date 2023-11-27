@@ -48,6 +48,8 @@ private:
     int m_WindowWidth;
     int m_WindowHeight;
 
+    unsigned int m_GameTicks;
+
     bool m_Running;
 
 

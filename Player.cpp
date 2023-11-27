@@ -79,7 +79,7 @@ void Player::shoot() {
     if(m_CanShoot){
             // Initial pushback
         m_IsMoving = true;
-        m_Speed = 12.0f;
+        m_Speed = 8.0f;
 
             // Primary
         Game::getInstance()->addGameObject<Particle>(new LoaderParams({m_Position.x + m_Width/2 - 25, m_Position.y + m_Height/2 - 25}, 50, 40, m_Angle - 180.0f, "particle",m_Spin,m_Speed,{}, {}, {}));

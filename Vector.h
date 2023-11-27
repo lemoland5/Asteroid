@@ -32,6 +32,8 @@ public:
 };
 float degToRadian(float deg);
 float radianToDeg(float rad);
+Vector2 degToVector(float deg);
+
 float getVectorAngle(Vector2 vector, Vector2 reference);
 
 

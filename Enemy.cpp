@@ -20,14 +20,14 @@ Enemy::Enemy(const LoaderParams *params) : SDLGameObject(params) {
 void Enemy::update() {
 
     m_UpdateCounter++;
-    m_Spin = m_Angle;
+    m_Spin = m_Angle + 45.0f;
 
 //    std::cout<<"Update player \n";
     SDLGameObject::update();
     handleCollisions();
 
         // -y because of reversed y-axis in sdl
-    m_Angle = getVectorAngle({Game::getInstance()->getPlayer()->getPosition().x - m_Position.x,-Game::getInstance()->getPlayer()->getPosition().y - -m_Position.y}, {1,0}) - 180.0f;
+    m_Angle = getVectorAngle({Game::getInstance()->getPlayer()->getPosition().x - m_Position.x,-Game::getInstance()->getPlayer()->getPosition().y - -m_Position.y}, {1,0});
 
 
 //    if(m_UpdateCounter%m_ParticleDelay == 0){

@@ -1,3 +1,4 @@
+#include "Game.h"
 #include "Particle.h"
 #include "TextureManager.h"
 
@@ -20,6 +21,7 @@ void Particle::update() {
 }
 
 void Particle::handleCollisions() {
+//    if(m_CollisionStack.top() != Game::getInstance()->getPlayer()) clean();
 }
 
 Particle::Particle(const LoaderParams* params): SDLGameObject(params){
