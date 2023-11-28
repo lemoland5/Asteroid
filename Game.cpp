@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "EventHandler.h"
 #include "Game.h"
+#include "SpawnManager.h"
 #include "TextureManager.h"
 #include "Vector.h"
 #include <iostream>
@@ -80,11 +81,7 @@ void Game::update() {
     ++m_GameTicks;
 //    std::cout<<getVectorAngle({0,1}, {1,0})<<"\n";
 
-    if(m_GameTicks % 180 == 0){
-        addGameObject<Enemy>(new LoaderParams({static_cast<float>(m_WindowWidth * (rand()%100)/100),static_cast<float>(m_WindowHeight * (rand()%40)/100)},40,40,80.0f,"rocketbad",0.0f,1,{},{},{})) ;
-    }
-
-
+    SpawnManager::getInstance()->evalSpawn<Enemy>();
 
     for(int i = 0; i < m_GameObjects.size(); i++){
 

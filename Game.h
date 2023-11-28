@@ -33,6 +33,7 @@ public:
     [[nodiscard]] int getWindowHeight() const {return m_WindowHeight; };
     [[nodiscard]] std::vector<SDLGameObject*> getGameObjects() const {return m_GameObjects; };
     [[nodiscard]] SDLGameObject* getPlayer() const {return m_GameObjects[0]; };
+    [[nodiscard]] unsigned int getGameTicks() const {return m_GameTicks; };
 
     static Game* getInstance(); // Singleton
 

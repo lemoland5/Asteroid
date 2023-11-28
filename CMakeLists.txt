@@ -15,6 +15,9 @@ add_executable(Asteroid main.cpp
         Particle.h
         Enemy.cpp
         Enemy.h
+        Point.h
+        SpawnManager.cpp
+        SpawnManager.h
 )
 
 find_package(SDL2_image CONFIG REQUIRED)
