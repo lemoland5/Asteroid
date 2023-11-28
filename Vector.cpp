@@ -1,15 +1,11 @@
 #include "Vector.h"
 #include <cmath>
 
-Vector2::Vector2(){
+Vector2::Vector2(): Point(){
     x = 0;
     y = 0;
 }
 
-Vector2::Vector2(float x, float y){
-    this->x = x;
-    this->y = y;
-}
 
 float Vector2::length() const {
     return sqrt(x*x + y*y);
@@ -73,3 +69,7 @@ float getVectorAngle(Vector2 vector, Vector2 reference) {
     return angleDegrees;
 }
 
+bool hasIntersection(Circle circle, Point point){
+    if(sqrt(((circle.x - point.x)*(circle.x - point.x))+((circle.y - point.y)*(circle.y - point.y))) <= circle.r) return true;
+    return false;
+}

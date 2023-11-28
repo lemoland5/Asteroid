@@ -43,7 +43,7 @@ bool Game::init(const char *windowname, int x, int y, int w,    int h, SDL_Windo
 
 //                float degrees = 0.0f;
 //                std::cout<<degToVector(degrees).x<<", "<<degToVector(degrees).y<<"\n";
-
+//                std::cout<<hasIntersection(Circle(1,1,1),Point(1.01,0))<<"\n";
 
 
                     // DO NOT EDIT PLACEMENT OF THIS LINE
@@ -94,7 +94,7 @@ void Game::update() {
         }
     }
 
-    std::cout<<m_GameObjects.size()<<"\n";
+//    std::cout<<m_GameObjects.size()<<"\n";
 }
 
 void Game::clean(){

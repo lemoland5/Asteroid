@@ -67,7 +67,6 @@ void Player::updateMovement() {
 
 void Player::updateAction() {
     if(m_IsMoving) m_CanShoot = false;
-
 }
 
 void Player::handleCollisions() {
